@@ -1,0 +1,32 @@
+language: fo
+title: Faroese Full-FLAN EuroEval
+results_dir: results/experiment4
+num_iterations: 10
+gpu_memory_utilization: 0.8
+attention_backend: TRITON_ATTN
+
+datasets:
+  - fosent
+  - scala-fo
+  - fone
+  - foqa
+  - wikiann-fo
+  - multi-wiki-qa-fo
+  - gerlangmod-fo
+
+checkpoints:
+  base:
+    step: 0
+    model: google/gemma-3-1b-it
+  checkpoint-5000:
+    step: 5000
+    model: outputs/experiment4/checkpoint-5000
+  checkpoint-10000:
+    step: 10000
+    model: outputs/experiment4/checkpoint-10000
+  checkpoint-15000:
+    step: 15000
+    model: outputs/experiment4/checkpoint-15000
+  final:
+    step: 15724
+    model: outputs/experiment4

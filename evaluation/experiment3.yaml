@@ -1,0 +1,33 @@
+language: is
+title: Icelandic Full-FLAN EuroEval
+results_dir: results/experiment3
+num_iterations: 10
+gpu_memory_utilization: 0.8
+attention_backend: TRITON_ATTN
+
+datasets:
+  - hotter-and-colder-sentiment
+  - scala-is
+  - mim-gold-ner
+  - nqii
+  - rrn
+  - icelandic-knowledge
+  - winogrande-is
+  - zebra-puzzles-easy-is
+
+checkpoints:
+  base:
+    step: 0
+    model: google/gemma-3-1b-it
+  checkpoint-3000:
+    step: 3000
+    model: outputs/experiment3/checkpoint-3000
+  checkpoint-6000:
+    step: 6000
+    model: outputs/experiment3/checkpoint-6000
+  checkpoint-9000:
+    step: 9000
+    model: outputs/experiment3/checkpoint-9000
+  final:
+    step: 9494
+    model: outputs/experiment3

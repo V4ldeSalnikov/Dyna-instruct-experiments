@@ -1,0 +1,35 @@
+language: is
+title: Icelandic EuroEval — pretrained start
+results_dir: results/experiment6
+num_iterations: 10
+gpu_memory_utilization: 0.8
+attention_backend: TRITON_ATTN
+
+datasets:
+  - hotter-and-colder-sentiment
+  - scala-is
+  - mim-gold-ner
+  - nqii
+  - rrn
+  - icelandic-knowledge
+  - winogrande-is
+  - zebra-puzzles-easy-is
+
+checkpoints:
+  base:
+    step: 0
+    model: google/gemma-3-1b-pt
+    chat_template_path: templates/gemma3.jinja
+  checkpoint-285:
+    step: 285
+    model: V4ldeLund/gemma-3-1b-pt-icelandic-experiment6
+    subfolder: checkpoint-285
+  checkpoint-570:
+    step: 570
+    model: outputs/experiment6/checkpoint-570
+  checkpoint-855:
+    step: 855
+    model: outputs/experiment6/checkpoint-855
+  final:
+    step: 861
+    model: outputs/experiment6

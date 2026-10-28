@@ -1,0 +1,65 @@
+env:
+  WANDB_PROJECT: faroese-icelandic-sft
+
+model_name_or_path: google/gemma-3-1b-it
+dtype: bfloat16
+chat_template_path: templates/gemma3.jinja
+
+datasets:
+  - path: V4ldeLund/Icelandic-Instruct
+    columns: [messages]
+  - path: Frejams/Icelandic-Flan
+    name: igc_news
+    columns: [messages]
+  - path: Frejams/Icelandic-Flan
+    name: ejournals_is
+    columns: [messages]
+  - path: Frejams/Icelandic-Flan
+    name: eso
+    columns: [messages]
+  - path: Frejams/Icelandic-Flan
+    name: umbodsmadur
+    columns: [messages]
+  - path: Frejams/Icelandic-Flan
+    name: hagstofa
+    columns: [messages]
+  - path: Frejams/Icelandic-Flan
+    name: stjornartidindi
+    columns: [messages]
+test_split_size: null
+
+output_dir: outputs/experiment2
+run_name: gemma-3-1b-it-icelandic-experiment2
+seed: 42
+data_seed: 42
+
+num_train_epochs: 1
+learning_rate: 2.0e-5
+lr_scheduler_type: cosine
+warmup_steps: 43
+weight_decay: 0.01
+
+per_device_train_batch_size: 32
+gradient_accumulation_steps: 1
+gradient_checkpointing: true
+bf16: true
+tf32: true
+
+max_length: 2048
+packing: false
+assistant_only_loss: true
+
+eval_strategy: "no"
+save_strategy: steps
+save_steps: 285
+save_total_limit: 3
+save_only_model: true
+
+logging_strategy: steps
+logging_steps: 5
+logging_first_step: true
+report_to: wandb
+
+push_to_hub: true
+hub_model_id: V4ldeLund/gemma-3-1b-it-icelandic-experiment2
+hub_strategy: all_checkpoints

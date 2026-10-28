@@ -1,0 +1,34 @@
+language: fo
+title: Faroese EuroEval — pretrained start
+results_dir: results/experiment5
+num_iterations: 10
+gpu_memory_utilization: 0.8
+attention_backend: TRITON_ATTN
+
+datasets:
+  - fosent
+  - scala-fo
+  - fone
+  - foqa
+  - wikiann-fo
+  - multi-wiki-qa-fo
+  - gerlangmod-fo
+
+checkpoints:
+  base:
+    step: 0
+    model: google/gemma-3-1b-pt
+    chat_template_path: templates/gemma3.jinja
+  checkpoint-82:
+    step: 82
+    model: V4ldeLund/gemma-3-1b-pt-faroese-experiment5
+    subfolder: checkpoint-82
+  checkpoint-164:
+    step: 164
+    model: outputs/experiment5/checkpoint-164
+  checkpoint-246:
+    step: 246
+    model: outputs/experiment5/checkpoint-246
+  final:
+    step: 248
+    model: outputs/experiment5

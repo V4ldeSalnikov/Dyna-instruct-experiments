@@ -1,0 +1,54 @@
+# Authentication and local secrets
+.env
+.env.*
+!.env.example
+.secrets/
+secrets/
+credentials.json
+credentials.yaml
+credentials.yml
+service-account*.json
+*_credentials.json
+.netrc
+.npmrc
+.pypirc
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+*.egg-info/
+build/
+dist/
+
+# Training artifacts, runtime logs, and machine-specific raw records
+outputs/
+checkpoints/
+cache/
+.cache/
+.huggingface/
+wandb/
+logs/
+*.log
+evaluation/results/**/raw/
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.bin
+
+# Local editor and operating-system files
+.DS_Store
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,47 @@
+env:
+  WANDB_PROJECT: faroese-icelandic-sft
+
+model_name_or_path: google/gemma-3-1b-it
+dtype: bfloat16
+
+datasets:
+  - path: V4ldeLund/Faroese-Instruct
+    columns: [messages]
+  - path: V4ldeLund/Icelandic-Instruct
+    columns: [messages]
+test_split_size: 0.05
+
+output_dir: outputs/gemma-3-1b-it-sft
+run_name: gemma-3-1b-it-faroese-icelandic
+seed: 42
+data_seed: 42
+
+num_train_epochs: 3
+learning_rate: 2.0e-5
+lr_scheduler_type: cosine
+warmup_steps: 0.05
+weight_decay: 0.01
+
+per_device_train_batch_size: 8
+per_device_eval_batch_size: 8
+gradient_accumulation_steps: 2
+bf16: true
+tf32: true
+
+max_length: 2048
+packing: false
+assistant_only_loss: true
+
+eval_strategy: steps
+eval_steps: 50
+save_strategy: steps
+save_steps: 50
+save_total_limit: 2
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+greater_is_better: false
+
+logging_strategy: steps
+logging_steps: 5
+logging_first_step: true
+report_to: wandb
